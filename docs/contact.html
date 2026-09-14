@@ -161,13 +161,15 @@
   var submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function (e) {
-    // Submit quietly in the background instead of navigating the page to
-    // formsubmit.co — some antivirus/browser-security tools (Kaspersky
-    // included) flag a visible cross-domain form redirect as a possible
-    // phishing pattern. A background request avoids that entirely while
-    // still delivering the email exactly the same way. If JavaScript is
-    // unavailable, the form's normal action/method above still works as a
-    // fallback (with a full-page redirect to thank-you.html).
+    // Try to submit quietly in the background first — some antivirus/browser
+    // security tools (Kaspersky included) flag a visible cross-domain form
+    // redirect as a possible phishing pattern, and a background request
+    // avoids that. But FormSubmit's background (AJAX) endpoint occasionally
+    // fails for reasons outside our control (a CORS hiccup on their end, a
+    // dropped connection, etc). Rather than dead-ending with an error message
+    // when that happens, fall back to a normal full-page form submission —
+    // slower and with the small chance of the antivirus warning above, but it
+    // still gets the enquiry delivered instead of losing it.
     e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
@@ -185,13 +187,15 @@
         window.location.href = 'thank-you.html';
       })
       .catch(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+        // Background submission didn't work — fall back to a normal
+        // full-page submit using the form's own action/method so the
+        // message still goes through.
         if (statusEl) {
           statusEl.style.display = 'block';
-          statusEl.style.color = '#c0392b';
-          statusEl.textContent = 'Something went wrong sending your message — please call or email us directly instead.';
+          statusEl.style.color = '#555';
+          statusEl.textContent = 'Sending the usual way instead — one moment…';
         }
+        form.submit();
       });
   });
 })();
