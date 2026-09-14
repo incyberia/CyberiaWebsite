@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | {{BUSINESS_NAME}}</title>
+<meta name="description" content="Thanks for contacting {{BUSINESS_NAME}} — we'll get back to you shortly.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div><span>📍 {{CITY_STATE}}</span><span>✉️ {{EMAIL}}</span></div>
+    <div><span>📞 {{PHONE_DISPLAY}}</span><a href="amc.html">AMC Support Login</a></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="logo">{{LOGO_PRIMARY}}<small>{{TAGLINE}}</small></div>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="repairs.html">Repairs</a></li>
+        <li><a href="security.html">Security &amp; Access</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="mercury.html">Mercury Healthcare</a></li>
+        <li><a href="amc.html">AMC Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta"><a href="contact.html" class="btn btn-teal btn-small"><span class="btn-text-full">Get a </span>Quote</a></div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Thanks — Your Message Is On Its Way</h1>
+    <p>We've received your enquiry and someone from our team will get back to you shortly, usually within one business day.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">In The Meantime</p>
+      <h2>Have a look around</h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><h3>Hardware</h3><p>Computers, networking, UPS &amp; power protection.</p><p><a href="hardware.html" class="card-link">View →</a></p></div>
+      <div class="card"><h3>Repairs</h3><p>Laptop, computer &amp; Mac repairs, plus speed upgrades.</p><p><a href="repairs.html" class="card-link">View →</a></p></div>
+      <div class="card"><h3>Mercury Healthcare</h3><p>Our in-house DICOM imaging &amp; reporting software.</p><p><a href="mercury.html" class="card-link">View →</a></p></div>
+      <div class="card"><h3>AMC Services</h3><p>Annual maintenance for IT, CCTV &amp; biometric equipment.</p><p><a href="amc.html" class="card-link">View →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>{{BUSINESS_NAME}}</h4><p>Your Mumbai-based partner for IT hardware, security systems, software licensing, healthcare imaging software, and AMC support.</p></div>
+      <div><h4>Solutions</h4><ul><li><a href="hardware.html">Hardware</a></li><li><a href="repairs.html">Repairs</a></li><li><a href="security.html">Security &amp; Access</a></li><li><a href="software.html">Software</a></li><li><a href="mercury.html">Mercury Healthcare</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="amc.html">AMC Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Get in Touch</h4><ul><li>📍 {{ADDRESS}}, {{CITY_STATE}}</li><li>📞 {{PHONE_DISPLAY}}</li><li>✉️ {{EMAIL}}</li></ul></div>
+    </div>
+    <div class="footer-bottom">© {{COPYRIGHT_YEAR}} {{BUSINESS_NAME}}. All rights reserved. | Replace placeholder name, address &amp; contact details before publishing.</div>
+  </div>
+</footer>
+
+<script>document.querySelector('.menu-toggle').addEventListener('click', function () { document.querySelector('.main-nav').classList.toggle('open'); });</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | {{BUSINESS_NAME}}</title>
+<meta name="description" content="Get in touch with {{BUSINESS_NAME}} in Mumbai for hardware, software, security systems, Mercury healthcare software, or AMC support.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div><span>📍 {{CITY_STATE}}</span><span>✉️ {{EMAIL}}</span></div>
+    <div><span>📞 {{PHONE_DISPLAY}}</span><a href="amc.html">AMC Support Login</a></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="logo">{{LOGO_PRIMARY}}<small>{{TAGLINE}}</small></div>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="repairs.html">Repairs</a></li>
+        <li><a href="security.html">Security &amp; Access</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="mercury.html">Mercury Healthcare</a></li>
+        <li><a href="amc.html">AMC Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta"><a href="contact.html" class="btn btn-teal btn-small"><span class="btn-text-full">Get a </span>Quote</a></div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb" style="color:#cfe3f2;">Home / Contact</p>
+    <h1>Get In Touch</h1>
+    <p>Tell us what you need — a hardware quote, software licensing, a security system, Mercury demo, or an AMC plan — and we'll respond promptly.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid grid-2" style="align-items:start;">
+
+      <div class="card">
+        <h3>Send Us a Message</h3>
+        <form action="https://formsubmit.co/{{EMAIL}}" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from the {{BUSINESS_NAME}} website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="{{SITE_URL}}/thank-you.html">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-grid">
+            <div>
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="{{PHONE_DISPLAY}}" required>
+            </div>
+            <div class="full">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com">
+            </div>
+            <div class="full">
+              <label for="interest">I'm Interested In</label>
+              <select id="interest" name="interest">
+                <option>Computers, Monitors &amp; Hardware</option>
+                <option>Computer / Laptop Repairs &amp; Upgrades</option>
+                <option>Networking Equipment</option>
+                <option>CCTV / Biometric Security</option>
+                <option>Software Licensing (OS, Office, Antivirus, Tally, Design Software)</option>
+                <option>Mercury Imaging / Reporting Software</option>
+                <option>Full IT Infrastructure AMC</option>
+                <option>CCTV &amp; Biometric AMC</option>
+                <option>Something Else</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us a bit about your requirement..."></textarea>
+            </div>
+            <div class="full">
+              <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+            </div>
+          </div>
+        </form>
+        <p style="margin-top:14px; font-size:0.85rem;">This form delivers straight to {{EMAIL}} via FormSubmit — the very first submission after publishing will trigger a one-time "Activate Form" email; click the link in it once and every submission after that arrives automatically.</p>
+      </div>
+
+      <div class="contact-info-card">
+        <h3>Contact Details</h3>
+        <div class="info-row">
+          <strong>Office Address</strong>
+          <p>{{ADDRESS}}, {{CITY_STATE}}, India</p>
+        </div>
+        <div class="info-row">
+          <strong>Phone</strong>
+          <p><a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a></p>
+        </div>
+        <div class="info-row">
+          <strong>Email</strong>
+          <p><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
+        </div>
+        <div class="info-row">
+          <strong>Business Hours</strong>
+          <p>{{HOURS_WEEKDAY}}<br>AMC customers: {{AMC_SUPPORT_HOURS}} breakdown support</p>
+        </div>
+        <div class="info-row">
+          <strong>AMC / Existing Customers</strong>
+          <p>Already on an AMC? Call our dedicated support line for priority assistance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Find Us</p>
+      <h2>Visit our office</h2>
+    </div>
+    <div style="border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
+      <iframe src="{{MAP_EMBED_SRC}}" width="100%" height="320" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{{BUSINESS_NAME}} location on Google Maps"></iframe>
+    </div>
+    <p class="text-center" style="margin-top:16px;">
+      <a href="{{MAP_LINK}}" target="_blank" rel="noopener" class="btn btn-teal btn-small">Open in Google Maps / Get Directions</a>
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>{{BUSINESS_NAME}}</h4><p>Your Mumbai-based partner for IT hardware, security systems, software licensing, healthcare imaging software, and AMC support.</p></div>
+      <div><h4>Solutions</h4><ul><li><a href="hardware.html">Hardware</a></li><li><a href="repairs.html">Repairs</a></li><li><a href="security.html">Security &amp; Access</a></li><li><a href="software.html">Software</a></li><li><a href="mercury.html">Mercury Healthcare</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="amc.html">AMC Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Get in Touch</h4><ul><li>📍 {{ADDRESS}}, {{CITY_STATE}}</li><li>📞 {{PHONE_DISPLAY}}</li><li>✉️ {{EMAIL}}</li></ul></div>
+    </div>
+    <div class="footer-bottom">© {{COPYRIGHT_YEAR}} {{BUSINESS_NAME}}. All rights reserved. | Replace placeholder name, address &amp; contact details before publishing.</div>
+  </div>
+</footer>
+
+<script>document.querySelector('.menu-toggle').addEventListener('click', function () { document.querySelector('.main-nav').classList.toggle('open'); });</script>
+</body>
+</html>
