@@ -34,6 +34,7 @@ BUILD_DIR = ROOT / "docs"
 CONFIG_PATH = ROOT / "site_config.json"
 CSS_FILE = ROOT / "style.css"
 IMAGES_DIR = ROOT / "images"
+CNAME_FILE = ROOT / "CNAME"
 
 TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
 
@@ -107,6 +108,9 @@ def main():
         shutil.copytree(IMAGES_DIR, dest)
     else:
         print(f"Note: no images/ folder found — pages will show the placeholder image boxes until you add one.")
+
+    if CNAME_FILE.exists():
+        shutil.copy(CNAME_FILE, BUILD_DIR / "CNAME")
 
     print(f"Built {len(rendered)} page(s) into {BUILD_DIR}/")
     if warnings:
