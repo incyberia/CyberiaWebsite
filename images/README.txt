@@ -24,5 +24,11 @@ repairs.html
   mac-laptop-repair.jpg
   antivirus.jpg
 
+about.html
+  owner-sunil-shah.jpg
+  owner-jignesh-shah.jpg
+  (these two are cropped into a circle, so a square, front-facing headshot
+  works best)
+
 Until a file is added, that card shows a dashed placeholder box naming the
 exact filename it's waiting for — so you always know what to add and where.
