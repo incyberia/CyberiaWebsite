@@ -51,7 +51,7 @@
 
       <div class="card">
         <h3>Send Us a Message</h3>
-        <form action="https://formsubmit.co/{{EMAIL}}" method="POST">
+        <form id="contact-form" action="https://formsubmit.co/{{EMAIL}}" method="POST">
           <input type="hidden" name="_subject" value="New enquiry from the {{BUSINESS_NAME}} website">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -89,6 +89,7 @@
               <textarea id="message" name="message" placeholder="Tell us a bit about your requirement..."></textarea>
             </div>
             <div class="full">
+              <p id="form-status" style="display:none; margin-bottom:10px; font-size:0.88rem;"></p>
               <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
             </div>
           </div>
@@ -152,5 +153,48 @@
 </footer>
 
 <script>document.querySelector('.menu-toggle').addEventListener('click', function () { document.querySelector('.main-nav').classList.toggle('open'); });</script>
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var statusEl = document.getElementById('form-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', function (e) {
+    // Submit quietly in the background instead of navigating the page to
+    // formsubmit.co — some antivirus/browser-security tools (Kaspersky
+    // included) flag a visible cross-domain form redirect as a possible
+    // phishing pattern. A background request avoids that entirely while
+    // still delivering the email exactly the same way. If JavaScript is
+    // unavailable, the form's normal action/method above still works as a
+    // fallback (with a full-page redirect to thank-you.html).
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    if (statusEl) { statusEl.style.display = 'none'; }
+
+    var ajaxAction = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+    fetch(ajaxAction, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function (response) {
+        if (!response.ok) { throw new Error('Request failed'); }
+        window.location.href = 'thank-you.html';
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.color = '#c0392b';
+          statusEl.textContent = 'Something went wrong sending your message — please call or email us directly instead.';
+        }
+      });
+  });
+})();
+</script>
 </body>
 </html>
