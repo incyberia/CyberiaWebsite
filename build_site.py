@@ -6,18 +6,20 @@ What it does:
   Reads business details (name, phone, email, address, stats, etc.) from
   site_config.json, and fills in the {{TOKEN}} placeholders found in every
   templates/*.html file, writing the finished, ready-to-publish pages into
-  build/. style.css is copied alongside them unchanged.
+  docs/. style.css is copied alongside them unchanged.
 
-Why templates/ + build/ are separate:
+Why templates/ + docs/ are separate:
   templates/*.html is your source content — edit headings, paragraphs,
   service lists, etc. directly in those files (in VS Code or any editor).
   Just don't touch the {{TOKEN}} markers, since those get replaced automatically.
   site_config.json is your one place to update contact details and stats.
-  build/ is generated output — never edit it by hand, since re-running this
-  script overwrites it completely.
+  docs/ is generated output — never edit it by hand, since re-running this
+  script overwrites it completely. It's named "docs" (not "build") on purpose:
+  GitHub Pages can serve a site straight out of a folder with that exact name,
+  with no extra setup — see README.md.
 
 Usage:
-    python3 build_site.py            # render templates -> build/
+    python3 build_site.py            # render templates -> docs/
     python3 build_site.py --check    # just report missing/unused tokens, write nothing
 """
 import json
@@ -28,7 +30,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 TEMPLATES_DIR = ROOT / "templates"
-BUILD_DIR = ROOT / "build"
+BUILD_DIR = ROOT / "docs"
 CONFIG_PATH = ROOT / "site_config.json"
 CSS_FILE = ROOT / "style.css"
 IMAGES_DIR = ROOT / "images"
@@ -96,7 +98,7 @@ def main():
     if CSS_FILE.exists():
         shutil.copy(CSS_FILE, BUILD_DIR / CSS_FILE.name)
     else:
-        print(f"Warning: {CSS_FILE.name} not found — pages in build/ will be unstyled.")
+        print(f"Warning: {CSS_FILE.name} not found — pages in {BUILD_DIR.name}/ will be unstyled.")
 
     if IMAGES_DIR.exists():
         dest = BUILD_DIR / "images"
